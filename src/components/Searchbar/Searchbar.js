@@ -3,6 +3,14 @@ import PropTypes from "prop-types";
 import "./Searchbar.css";
 
 export default class Searchbar extends Component {
+  static propTypes = {
+    inputValue: PropTypes.string,
+  };
+
+  static defaultProps = {
+    inputValue: "",
+  };
+
   state = {
     inputValue: "",
   };
@@ -34,8 +42,8 @@ export default class Searchbar extends Component {
             onChange={this.handleChange}
             className="searchbar-input"
             type="text"
-            // autocomplete="off"
-            // autofocus
+            autoComplete="off"
+            autoFocus
             placeholder="Search images and photos"
           />
         </form>
@@ -43,11 +51,3 @@ export default class Searchbar extends Component {
     );
   }
 }
-
-Searchbar.propTypes = {
-  inputValue: PropTypes.string,
-};
-
-Searchbar.defaultProps = {
-  inputValue: "",
-};

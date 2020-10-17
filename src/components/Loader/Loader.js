@@ -1,3 +1,1 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import Loader from './Loader.css'
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";

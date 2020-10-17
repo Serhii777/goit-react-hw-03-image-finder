@@ -2,27 +2,25 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./ImageGalleryItem.css";
 
-const ImageGalleryItem = ({ key, src }) => {
+const ImageGalleryItem = ({ id, src, onShow }) => {
   return (
-    <li className="ImageGalleryItem" key={key}>
-      <img src={src} alt="" className="ImageGalleryItem-image" />
+    <li className="gallery-item" key={id} onClick={onShow}>
+      <img src={src} alt="" className="gallery-image" />
     </li>
   );
 };
 
-// ContactList.propTypes = {
-//     props: PropTypes.exact({
-//       contacts: PropTypes.arrayOf(PropTypes.string),
-//       id: PropTypes.string.isRequired,
-//       name: PropTypes.string.isRequired,
-//       number: PropTypes.string.isRequired,
-//     }),
-//   };
+ImageGalleryItem.propTypes = {
+  props: PropTypes.exact({
+    id: PropTypes.string.isRequired,
+    src: PropTypes.string.isRequired,
+    onShow: PropTypes.func.isRequired,
+  }),
+};
 
-//   ContactList.defaultProps = {
-//     id: "",
-//     name: "",
-//     number: '',
-//   };
+ ImageGalleryItem.defaultProps = {
+    id: "",
+    src: "",
+  };
 
 export default ImageGalleryItem;

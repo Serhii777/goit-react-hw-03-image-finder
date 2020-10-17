@@ -3,39 +3,34 @@ import PropTypes from "prop-types";
 import ImageGalleryItem from "../ImageGalleryItem";
 import "./ImageGallery.css";
 
-const ImageGallery = ({images}) => {
-console.log(images);
-
+const ImageGallery = ({ images, onShowLargeImage }) => {
   return (
-    <ul className="ImageGallery">
-
-      {images.map(({ id, webformatURL }) => (
-      <ImageGalleryItem
-        key={id}
-        src={webformatURL}
-        // completed={completed}
-        // onRemove={() => onRemoveTask(id)}
-        // onUpdate={() => onUpdateTask(id)}
-      />
-    ))}
-
+    <ul className="gallery">
+      {images.map(({ id, webformatURL, largeImageURL }) => (
+        <ImageGalleryItem
+          id={id}
+          src={webformatURL}
+          onShow={() => onShowLargeImage(largeImageURL)}
+        />
+      ))}
     </ul>
   );
 };
 
-// ContactList.propTypes = {
-//     props: PropTypes.exact({
-//       contacts: PropTypes.arrayOf(PropTypes.string),
-//       id: PropTypes.string.isRequired,
-//       name: PropTypes.string.isRequired,
-//       number: PropTypes.string.isRequired,
-//     }),
-//   };
+ImageGallery.propTypes = {
+  props: PropTypes.exact({
+    images: PropTypes.arrayOf(PropTypes.string),
+    id: PropTypes.string.isRequired,
+    webformatURL: PropTypes.string.isRequired,
+    largeImageURL: PropTypes.string.isRequired,
+    onShowLargeImage: PropTypes.func.isRequired,
+  }),
+};
 
-//   ContactList.defaultProps = {
-//     id: "",
-//     name: "",
-//     number: '',
-//   };
+ImageGallery.defaultProps = {
+  id: "",
+  webformatURL: "",
+  largeImageURL: "",
+};
 
 export default ImageGallery;
